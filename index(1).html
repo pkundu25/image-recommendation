@@ -1,0 +1,113 @@
+{% extends "import.html" %} 
+{% block content %}
+
+<center>
+<h1>Image Recommendation System</h1><br>
+
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+  	
+	<title>360 Degrees Product Viewer | CodyHouse</title>
+</head>
+
+
+<body>
+	<div class="container" style="padding-top:20px;">
+		<div class="col-md-7 col-md-offset-2">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Display Uploaded Image</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<form action="" method="POST" role="form" enctype="multpart/form-data">
+								<div class="form-group">
+									<label for="">Choose Image</label>
+									<input type="file" class="form-control" name="image" id="image">
+								</div>
+
+								<button type="submit" class="btn btn-primary">Upload</button>
+																<div class="form-group">
+									<img id="show_image" width="300">
+									<style>
+                                     body {
+                                        background-color: linen;
+                                          }
+
+                                        img.rright { transform: rotate(90deg) }
+                                    </style>
+									
+								
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+			function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				
+				reader.onload = function (e) {
+					$('#show_image').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#image").change(function(){
+			readURL(this);
+		});
+	</script>
+		
+	</body>	
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Deg Product Viewer</title>
+    <script src="pdt360DegViewer.js"></script>
+	</head>
+
+	<body>
+    <h3>360 Degree Product Viewer</h3>
+
+    <br />
+    <div id="pdtViewer">
+        <h3 class="hidePhone">Mouse Move over the image</h3>    
+        <div id="car4"></div>
+
+    </div>
+    <div id="dummy"></div>
+    <script>
+        var path = './img/';
+
+        //pdt360DegViewer(imgDivid, count, path, imgType, playable, autoPlay, drag, mouseMove, buttonNavigation, keyNavigation, scroll);
+
+//        pdt360DegViewer('car0', 51, path, 'png', true, true, false, false, false, false, false);    //playable autoPlay
+//        pdt360DegViewer('car1', 51, path, 'png', true, false, false, false, false, false, false);   //playable
+//        pdt360DegViewer('car2', 51, path, 'png', false, true, false, false, false, false, false);   //autoPlay
+//        pdt360DegViewer('car3', 51, path, 'png', false, false, true, false, false, false, false);   //draggable
+        pdt360DegViewer('car4', 51, path, 'png', false, false, false, true, false, false, false);   //mouseMove
+//        pdt360DegViewer('car5', 51, path, 'png', false, false, false, false, true, false, false);   //buttonNavigation
+//        pdt360DegViewer('car6', 51, path, 'png', false, false, false, false, false, true, false);   //keys
+//        pdt360DegViewer('car7', 51, path, 'png', false, false, false, false, false, false, true);   //scroll
+    </script>
+
+</body>
+	
+</html>	
+</center><br><br>
+{% endblock %}
